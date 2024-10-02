@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+
+    {% for i in posts %}
+        <br>
+        <li> {{ i.titulo }} </li>
+        <li> {{ i.subtitulo }} </li>
+        <li> {{ i.categoria }} </li>
+        <br>
+        <img src= '{{ i.imagen.url }}' alt= '', width = 200px, height = 200px>
+
+        {% empty %}
+        <h1> No hay registros </h1>
+
+    {% endfor %}
+
+    <br>
+    <h1> Ahora 
+        estamos en otro html </h1>
+    <h1> donde estamos
+        poniendo otro contenido</h1>
+
+{% endblock %}

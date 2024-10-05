@@ -5,3 +5,6 @@ def index(request):
 
 def posts(request):
     return render (request, 'posts.html')
+
+def navegacion(request):
+    return render (request, 'navegacion.html')

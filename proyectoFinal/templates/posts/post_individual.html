@@ -1,7 +1,22 @@
-<br>
-<li> {{ posts.titulo}} </li>
-<li> {{ posts.subtitulo}} </li>
-<li> {{ posts.categoria}} </li>
-<br>
-<li> {{ posts.texto}} </li>
-<img src= '{{ posts.imagen.url }}' alt= ''>
+{% extends 'base.html' %}
+
+{% block contenido %}
+    <br>
+    <li> {{ posts.titulo}} </li>
+    <li> {{ posts.subtitulo}} </li>
+    <li> {{ posts.categoria}} </li>
+    <br>
+    <li> {{ posts.texto}} </li>
+    <img src= '{{ posts.imagen.url }}' alt= ''>
+
+
+    <div class="card" style="width: 18rem;">
+        <img src="{{ posts.imagen.url}}" class="card-img-top" alt="...">
+        <div class="card-body">
+        <h5 class="card-title"> {{posts.titulo}} </h5>
+        <p class="card-text">{{posts.texto}}</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+
+{% endblock %}

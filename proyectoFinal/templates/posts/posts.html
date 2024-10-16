@@ -11,7 +11,7 @@
                 <p class="card-text">{{post.subtitulo}}</p>
                 <p class="card-text">{{post.fecha}}</p>
 
-                <a href= "/index" class="btn btn-primary">Go somewhere</a>
+                <a href= "{% url 'posts' %}{{post.id}}" class= "btn btn-primary">Abrir Post</a>
                 </div>
             </div>
 

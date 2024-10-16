@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
-{% comment %} {% load static %} {% endcomment %}
+{% load static %}
 
 {% block titulo %}
   <title>Inicio</title>
 {% endblock %}
-<div>
-  {% include 'posts.html' %}
-</div>
+
 {% block contenido %}
+<img class="img-fluid mx-auto" src="{% static 'img/banner.jpg' %}" alt="Imagen de registro de usuario">
+{% comment %} {% include 'posts/posts.html' %} {% endcomment %}
 {% endblock %} 

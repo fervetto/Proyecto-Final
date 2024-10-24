@@ -1,0 +1,11 @@
+<div class="d-flex flex-column justify-content-start bg-dark">
+    <form action="" method="POST" enctype="multipart/form-data" class="bg-dark text-primary p-4 rounded">
+        {% csrf_token %}
+        <h1 class="text-center">Agregar Comentario</h1>
+        <p class="text-center">Ingrese los datos y presione el botón de guardar</p>
+        {{ form.as_p }}
+        <div class="text-center">
+            <input type="submit" class="btn btn-primary" value="Comentar">
+        </div>
+    </form>
+</div>

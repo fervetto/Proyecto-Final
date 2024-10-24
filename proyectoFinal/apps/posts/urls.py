@@ -1,10 +1,12 @@
 from django.urls import path
-from .views import CrearCategoria, ActualizarCategoria, EliminarCategoria, PostListView, PostDetailView, CrearPost, ActualizarPost, EliminarPost, ListarPosts
+from .views import CrearCategoria, ActualizarCategoria, EliminarCategoria, PostListView, detalle_post, CrearPost, ActualizarPost, EliminarPost, ListarPosts
 from . import views
 
 urlpatterns = [
     path('posts/', PostListView.as_view(), name='posts'),
-    path('posts/<int:id>/', PostDetailView.as_view(), name= 'Post_individual'),
+    path('post/<int:id>', detalle_post, name= 'post'),
+    # path('posts/post_detalle/<int:id>/', PostDetailView.as_view(), name= 'Post_detalle'),
+    
 
     
     

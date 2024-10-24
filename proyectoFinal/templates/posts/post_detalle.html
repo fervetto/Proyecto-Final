@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block contenido %}
+    <div class="card d-flex flex-column justify-content-start mb-3 vh-100 p-3" style="width: 58rem;">
+        <h1 class="card-title"> {{posts.titulo}} </h1>
+        <img src="{{ posts.imagen.url}}" class="card-img-top" alt="...">
+        <div class="card-body">
+        <h4 class="card-text">{{posts.subtitulo}}</h4>
+        
+        <p class="card-text">{{posts.texto}}</p>
+        <a href="{% url 'Posts' %}" class="btn btn-primary">Volver Atras</a>
+        </div>
+    </div>
+
+    {%if user.is_authenticated%}
+        {% include 'comentarios/listar_comentarios.html' %}
+        {% include 'comentarios/agregar_comentario.html' %}
+        <a href={% url 'apps.comentarios:agregar_comentario' %} class="btn btn-primary"> Comentar </a>
+    {% endif %}
+
+{% endblock %}

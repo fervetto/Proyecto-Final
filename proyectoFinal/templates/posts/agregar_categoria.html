@@ -2,13 +2,14 @@
 
 {% block contenido %}
 
+<div class="bg-dark text-white d-flex justify-content-center align-items-center">
 <form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <h1>Agregar Categoria</h1>
     <p>Ingrese los datos y presione el boton de guardar</p>
     {{ form.as_p }}
    
-    <input type="submit" class="btn btn-primary" value="Guardar">
+    <input type="submit" class="btn btn-primary m-4" value="Guardar">
 </form>
-
+</div>
 {% endblock %}

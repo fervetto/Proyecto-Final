@@ -1,15 +1,35 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block contenido %}
-    <div class="card" style="width: 58rem;">
-        <h1 class="card-title"> {{posts.titulo}} </h1>
-        <img src="{{ posts.imagen.url}}" class="card-img-top" alt="...">
-        <div class="card-body">
-        <h4 class="card-text">{{posts.subtitulo}}</h4>
-        
-        <p class="card-text">{{posts.texto}}</p>
-        <a href="index.html" class="btn btn-primary">Volver Atras</a>
-        </div>
+<div class="card d-flex flex-column p-4 bg-secondary">
+    <h1 class="card-title text-center">{{ post.titulo }}</h1>
+    <div class="d-flex justify-content-center">
+        <img src="{{ post.imagen.url }}" class="card-img-top h-auto w-75" alt="...">
     </div>
 
+    <div class="card-body">
+        <h4 class="card-text">{{ post.subtitulo }}</h4>
+        <p class="card-text">{{ post.texto }}</p>
+        <a href="{% url 'posts' %}" class="btn btn-primary">Volver Atrás</a>
+    </div>
+
+    {% if user.is_staff %}
+    <div class="d-flex justify-content-end mt-2">
+        <div class="dropdown">
+            <button class="btn btn-outline-danger bg-dark dropdown-toggle" type="button" 
+                    id="dropdownMenuButton1" data-bs-toggle="dropdown" 
+                    aria-expanded="false">
+                Administrar
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="{% url 'actualizar_post' post.id %}">Modificar post</a></li>
+                <li><a class="dropdown-item" href="{% url 'eliminar_post' post.id %}">Eliminar post</a></li>
+            </ul>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+{% include 'comentarios/agregar_comentario.html' %}
+{% include 'comentarios/listar_comentarios.html' %}
 {% endblock %}

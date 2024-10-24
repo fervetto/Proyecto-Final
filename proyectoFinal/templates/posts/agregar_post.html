@@ -1,16 +1,15 @@
 {% extends 'base.html' %}
 
 {% block contenido %}
-
-<form action="" method="POST" enctype="multipart/form-data">
-    <div class= "p-3 mb-2 bg-dark text-white">
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <form action="" method="POST" enctype="multipart/form-data" class="bg-dark text-white p-4 rounded">
         {% csrf_token %}
-        <h1>Agregar Post</h1>
-        <p>Ingrese los datos y presione el boton de guardar</p>
-            {{ form.as_p }}
-            {% include 'posts/agregar_categoria.html' %}
-        <input type="submit" class="btn btn-light" value="Guardar">
-    </div>
-</form>
-
+        <h1 class="text-center">Agregar Post</h1>
+        <p class="text-center">Ingrese los datos y presione el botón de guardar</p>
+        {{ form.as_p }}
+        <div class="text-center">
+            <input type="submit" class="btn btn-light" value="Guardar">
+        </div>
+    </form>
+</div>
 {% endblock %}

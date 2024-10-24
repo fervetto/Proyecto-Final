@@ -1,0 +1,37 @@
+{% load static %}
+
+{% block titulo %}
+  <title>Contáctanos - CodeVault</title>
+{% endblock %}
+
+{% block contenido %}
+<div class="container mt-5 text-center bg-dark text-primary">
+  <h1 class="mb-4">Contáctanos</h1>
+  <p class="lead">¡Nos encantaría escuchar tus comentarios, ideas o sugerencias! Puedes encontrarnos en nuestras redes sociales:</p>
+
+  <!-- Redes sociales -->
+  <div class="d-flex justify-content-center mt-4">
+    <!-- Facebook -->
+    <a href="https://www.facebook.com/" target="_blank" class="text-decoration-none mx-3">
+      <i class="bi bi-facebook display-4 text-primary"></i>
+    </a>
+
+    <!-- Twitter -->
+    <a href="https://www.twitter.com/" target="_blank" class="text-decoration-none mx-3">
+      <i class="bi bi-twitter display-4 text-info"></i>
+    </a>
+
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/" target="_blank" class="text-decoration-none mx-3">
+      <i class="bi bi-instagram display-4" style="color: #C13584;"></i>
+    </a>
+  </div>
+
+  <hr class="my-5">
+
+  <h3 class="mt-5">¿Tienes alguna duda específica?</h3>
+  <p class="mb-4">Puedes enviarnos un correo a: <strong>contacto@codevault.com</strong></p>
+
+  <a href="{% url 'index' %}" class="btn btn-outline-primary mt-3">Volver al Inicio</a>
+</div>
+{% endblock %}

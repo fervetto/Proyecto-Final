@@ -11,7 +11,7 @@
                 <p class="card-text">{{post.subtitulo}}</p>
                 <p class="card-text">{{post.fecha}}</p>
 
-                <a href= "{% url 'posts' %}{{post.id}}" class= "btn btn-primary">Abrir Post</a>
+                <a href= "{% url 'post' post.id %}" class= "btn btn-primary">Abrir Post</a>
                 </div>
             </div>
 
@@ -19,10 +19,5 @@
                 <h1> No hay registros </h1>
         {% endfor %}
     </div>
-    <br>
-    <h1> Ahora 
-        estamos en otro html </h1>
-    <h1> donde estamos
-        poniendo otro contenido</h1>
 
 {% endblock %}

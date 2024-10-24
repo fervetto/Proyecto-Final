@@ -1,0 +1,30 @@
+{% load static %}
+<div class="Comentarios-list d-flex flex-column justify-content-start mb-3 p-3 bg-secondary text-white">
+    {% for item in comentarios %}
+    <div class="comentario-card">
+        <div class="d-flex align-items-start">
+            <img src="{% static 'img/avatar_default.jpeg' %}" alt="{{ item.usuario.username }}'s avatar" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;">
+            <div class="flex-grow-1">
+                <h6 class="mb-0">{{ item.usuario.username }}</h6>
+                <p class="mb-0 text-break opacity-75">{{ item.texto }}</p>
+            </div>
+            <small class="opacity-50 text-nowrap" style="font-size: 0.8em;">{{ item.fecha }}</small>
+            <!-- Fecha más pequeña -->
+        </div>
+        {% if user.is_authenticated and user.id == item.usuario.id %}
+        <div class="dropdown" style="float: right; margin-top: -10px;">
+            <button class="btn bg-dark btn-outline-danger dropdown-toggle" type="button" id="dropdownMenuButton"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Comentario
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li><a class="dropdown-item" href="{% url 'apps.comentarios:modificar_comentario' item.pk %}">Modificar
+                        comentario</a></li>
+                <li><a class="dropdown-item" href="{% url 'apps.comentarios:eliminar_comentario' item.pk %}">Eliminar
+                        comentario</a></li>
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>

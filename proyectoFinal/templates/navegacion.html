@@ -1,39 +1,66 @@
-<nav class="navbar navbar-expand-lg bg-dark" "bordar-body"> 
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#"> CodeVault </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse text-primary" id="navbarSupportedContent">
-        <ul class="navbar-nav text-primary me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/agregar_post">Agregar Post</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/iniciar_sesion">Iniciar Sesión</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Posts
-            </a>
-            <ul class="dropdown-menu text-primary bg-dark" >
-              <li><a class="dropdown-item text-primary" href="/agregar_post">Nuevo Post</a></li>
-              <li><a class="dropdown-item text-primary" href="/posts">Ver Posteos</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item text-primary" href="#">Something else here</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-          </li>
-        </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-      </div>
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">CodeVault</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+            data-bs-target="#navbarSupportedContent" 
+            aria-controls="navbarSupportedContent" 
+            aria-expanded="false" 
+            aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
+        </li>
+        {% if not user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'posts' %}">Ver Posteos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'apps.blog_auth:iniciar_sesion' %}">Iniciar Sesión</a>
+        </li>
+        {% endif %}
+
+        {% if user.is_authenticated %}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {{ user.username }}
+          </a>
+          <ul class="dropdown-menu bg-dark text-primary">
+            <li><a class="dropdown-item text-primary" href="{% url 'apps.blog_auth:editar_perfil' user.pk %}">Modificar Perfil</a></li>
+            <li>
+              <form method="post" action="{% url 'apps.blog_auth:cerrar_sesion' %}">
+                {% csrf_token %}
+                <button type="submit" class="dropdown-item text-primary">Cerrar sesión</button>
+              </form>
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Posts
+          </a>
+          <ul class="dropdown-menu bg-dark text-primary">
+            <li><a class="dropdown-item text-primary" href="{% url 'agregar_post' %}">Nuevo Post</a></li>
+            <li><a class="dropdown-item text-primary" href="{% url 'posts' %}">Ver Posteos</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item text-primary" href="{% url 'agregar_categoria' %}">Agregar Categoría</a></li>
+          </ul>
+        </li>
+        {% endif %}
+
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'about' %}">Acerca de Nosotros</a>
+        </li>
+      </ul>
+
+      {% comment %} <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form> {% endcomment %}
     </div>
-  </nav>
+  </div>
+</nav>

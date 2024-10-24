@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %}
+  <title>Acerca de - CodeVault</title>
+{% endblock %}
+
+{% block contenido %}
+<div class="container bg-dark text-primary p-20 m-20">
+  <div class="row align-items-center">
+    <!-- Imagen destacada -->
+    <div class="col-md-6">
+      <img src="{% static 'img/code_vault_logo.jpeg' %}" 
+           class="img-fluid rounded" 
+           alt="CodeVault Logo">
+    </div>
+
+    <!-- Texto principal -->
+    <div class="col-md-6">
+      <h1 class="mb-4">Acerca de CodeVault</h1>
+      <p class="lead">
+        Bienvenido a <strong>CodeVault</strong>, el blog donde los programadores encuentran 
+        inspiración, conocimiento y recursos útiles. Nuestra misión es ayudar a 
+        desarrolladores, tanto principiantes como experimentados, a descubrir herramientas, 
+        tutoriales y estrategias que mejoren sus habilidades.
+      </p>
+      <p>
+        Aquí encontrarás desde guías prácticas de programación y frameworks modernos, hasta 
+        reseñas de libros, recomendaciones de cursos, y consejos para avanzar en tu carrera.
+        ¡Nuestro objetivo es ser tu repositorio personal de recursos!
+      </p>
+    </div>
+  </div>
+
+  <hr class="my-5">
+
+  <!-- Misión y valores -->
+  <div class="row text-center">
+    <div class="col-md-4">
+      <i class="bi bi-gear-wide-connected display-4 text-primary mb-3"></i>
+      <h3>Conocimiento Compartido</h3>
+      <p>Promovemos la colaboración y el aprendizaje continuo en la comunidad de programadores.</p>
+    </div>
+    <div class="col-md-4">
+      <i class="bi bi-lightbulb display-4 text-warning mb-3"></i>
+      <h3>Innovación</h3>
+      <p>Mantenemos a los lectores al día con las últimas tendencias y tecnologías emergentes.</p>
+    </div>
+    <div class="col-md-4">
+      <i class="bi bi-people display-4 text-success mb-3"></i>
+      <h3>Comunidad</h3>
+      <p>Fomentamos un espacio inclusivo donde todos los programadores puedan sentirse bienvenidos.</p>
+    </div>
+  </div>
+{%include 'contact.html'%}
+  <hr class="my-5">
+
+
+  <!-- Call to Action -->
+  <div class="text-center">
+    <h3>¿Listo para aprender más?</h3>
+    <p>Explora nuestros <a href="{% url 'posts' %}">posts</a> y comienza a construir tu camino hacia el éxito en programación.</p>
+    <a href="{% url 'posts' %}" class="btn btn-primary m-10">Ver Posteos</a>
+  </div>
+</div>
+{% endblock %}

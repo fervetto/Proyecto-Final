@@ -17,8 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from .views import index, navegacion
-from apps.posts.views import PostListView, PostDetailView
+from .views import index, navegacion, about, contact
+from apps.posts.views import PostListView
 from django.conf.urls.static import static 
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf import settings
@@ -26,9 +26,12 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name = 'index'),
+    path('about', about, name = 'about'),
+        path('contact', contact, name = 'contact'),
     path('navegacion/', navegacion, name= 'navegacion'),
-    path('', include('apps.posts.urls')),
-    path('', include('apps.blog_auth.urls')),
+    path('posts/', include('apps.posts.urls')),
+    path('users/', include('apps.blog_auth.urls')),
+    path('comentarios/', include('apps.comentarios.urls')),
 ]+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 urlpatterns += staticfiles_urlpatterns()
